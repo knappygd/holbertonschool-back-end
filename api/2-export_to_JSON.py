@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Gather user's todo from API."""
+import json
 import requests as r
 import sys
-import json
 
 
 if __name__ == "__main__":
@@ -19,4 +19,5 @@ if __name__ == "__main__":
                     "completed": t["completed"],
                     "username": user["username"]
                 })
+
         json.dump({str(id): userlist}, file)
