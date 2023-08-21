@@ -19,4 +19,5 @@ if __name__ == "__main__":
                     "completed": t["completed"],
                     "username": user["username"]
                 })
+
         json.dump({str(id): userlist}, file)
