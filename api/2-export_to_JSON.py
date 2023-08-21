@@ -15,8 +15,8 @@ if __name__ == "__main__":
         for t in todo:
             if t["userId"] == id:
                 userlist.append({
-                    "task": t['title'],
-                    "completed": t['completed'],
+                    "task": t["title"],
+                    "completed": t["completed"],
                     "username": user["username"]
                 })
         json.dump({str(id): userlist}, file)
