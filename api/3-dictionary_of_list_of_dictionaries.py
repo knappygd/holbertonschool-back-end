@@ -21,4 +21,5 @@ if __name__ == "__main__":
                         "username": u["username"]
                     })
             userdict[str(id)] = userlist
+            userlist = []
         json.dump({str(id): userlist}, file)
