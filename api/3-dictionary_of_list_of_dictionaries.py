@@ -5,21 +5,21 @@ import requests as r
 
 
 if __name__ == "__main__":
-    user = r.get(f'https://jsonplaceholder.typicode.com/users').json()
+    user = r.get('https://jsonplaceholder.typicode.com/users').json()
     todo = r.get('https://jsonplaceholder.typicode.com/todos').json()
-    userlist = []
     userdict = {}
 
-    with open("todo_all_employees.json", "w") as file:
-        for u in user:
+    for u in user:
+        userlist = []
+        for t in todo:
             id = int(u["id"])
-            for t in todo:
-                if t["userId"] == id:
-                    userlist.append({
-                        "task": t["title"],
-                        "completed": t["completed"],
-                        "username": u["username"]
-                    })
-            userdict[str(id)] = userlist
-            userlist = []
-        json.dump({str(id): userlist}, file)
+            if t["userId"] == id:
+                userlist.append({
+                    "username": u["username"],
+                    "task": t["title"],
+                    "completed": t["completed"],
+                })
+        userdict[str(id)] = userlist
+
+    with open("todo_all_employees.json", "w") as file:
+        json.dump(userdict, file)
